@@ -12,11 +12,12 @@ export default function LayoutAdmin(props) {
   const { Header, Content, Footer } = Layout;
 
   const user = null;
-  //<Redirect to="/admin/login" /> esto en el video uso despues de route
+  // esto en el video uso despues de route
   if (!user) {
     return (
       <>
         <Route path="/admin/login" component={AdminSignIn} />
+        <Redirect to="/admin/login" />
       </>
     );
   }
