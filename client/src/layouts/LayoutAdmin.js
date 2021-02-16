@@ -1,15 +1,25 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
 import "./LayoutAdmin.scss";
+import AdminSignIn from "../pages/Admin/SignIn/SignIn";
 
 export default function LayoutAdmin(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(false);
   const { Header, Content, Footer } = Layout;
 
+  const user = null;
+  //<Redirect to="/admin/login" /> esto en el video uso despues de route
+  if (!user) {
+    return (
+      <>
+        <Route path="/admin/login" component={AdminSignIn} />
+      </>
+    );
+  }
   //console.log(props);
   return (
     <Layout>
